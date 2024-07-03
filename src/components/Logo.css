@@ -1,0 +1,51 @@
+/* src/components/Logo.css */
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    display: none; /* Hide the image if you only need the text and bars */
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.logo-title {
+    font-size: 36px;
+    color: #ffffff; /* Use the exact color as in the image */
+    margin: 0;
+}
+
+.logo-tagline {
+    font-size: 13px;
+    color: #ffffff;
+    margin: 0;
+}
+
+.logo-bars {
+    display: flex;
+    align-items: center;
+}
+
+.bar {
+    width: 10px;
+    height: 45px;
+    margin-left: 5px;
+}
+
+.bar1 {
+    background-color: #FFFFFF;
+}
+
+.bar2 {
+    background-color: #FFFFFF;
+}
+
+.bar3 {
+    background-color: #FFFFFF;
+}
