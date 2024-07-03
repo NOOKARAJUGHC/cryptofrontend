@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
     const [loginOpen, setLoginOpen] = useState(false);
     const [signupOpen, setSignupOpen] = useState(false);
 
-    const handleMenuOpen = (event: React.MouseEvent<HTMLButtonElement>, anchorElSetter: React.Dispatch<React.SetStateAction<HTMLElement | null>>) => {
+    const handleMenuOpen = (event: React.MouseEvent<HTMLElement>, anchorElSetter: React.Dispatch<React.SetStateAction<HTMLElement | null>>) => {
         anchorElSetter(event.currentTarget);
     };
 
@@ -49,27 +49,31 @@ const Navbar: React.FC = () => {
     };
 
     const menuItems1 = [
-        { label: 'Monitor', onClick: () => handleMenuClose(setAnchorElMonitor) },
-        { label: 'Technical Analysis', onClick: () => handleMenuClose(setAnchorElMonitor) },
-        { label: 'Index Wizard', onClick: () => handleMenuClose(setAnchorElMonitor) },
-        { label: 'My Wishlists', onClick: () => handleMenuClose(setAnchorElMonitor) },
+        { label: 'Monitor', route: '/monitor', onClick: () => handleMenuClose(setAnchorElMonitor) },
+        { label: 'Technical Analysis', route: '/technical-analysis', onClick: () => handleMenuClose(setAnchorElMonitor) },
+        { label: 'Index Wizard', route: '/index-wizard', onClick: () => handleMenuClose(setAnchorElMonitor) },
+        { label: 'My Wishlists', route: '/wishlists', onClick: () => handleMenuClose(setAnchorElMonitor) },
     ];
 
     const menuItems2 = [
-        { label: 'My Portfolios', onClick: () => handleMenuClose(setAnchorElMonitor) },
-        { label: 'Dashboard Summary', onClick: () => handleMenuClose(setAnchorElMonitor) },
-        { label: 'Portfolio Returns', onClick: () => handleMenuClose(setAnchorElMonitor) },
-        { label: 'Risk Overview', onClick: () => handleMenuClose(setAnchorElMonitor) },
+        { label: 'My Portfolios', route: '/portfolios', onClick: () => handleMenuClose(setAnchorElMonitor) },
+        { label: 'Dashboard Summary', route: '/dashboard-summary', onClick: () => handleMenuClose(setAnchorElMonitor) },
+        { label: 'Portfolio Returns', route: '/portfolio-returns', onClick: () => handleMenuClose(setAnchorElMonitor) },
+        { label: 'Risk Overview', route: '/risk-overview', onClick: () => handleMenuClose(setAnchorElMonitor) },
     ];
 
     return (
         <Router> {/* Wrap your component with Router */}
             <AppBar position="static">
                 <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Logo /> {/* Add the Logo component here */}
+                    <RouterLink to="/"> {/* Link to home */}
+                        <Logo /> {/* Add the Logo component here */}
+                    </RouterLink>
                     <Box>
                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
                             <Button
+                                component={RouterLink}
+                                to="/crypto-monitor"
                                 color="inherit"
                                 aria-controls="crypto-monitor-menu"
                                 aria-haspopup="true"
@@ -95,11 +99,15 @@ const Navbar: React.FC = () => {
                             >
                                 {menuItems1.map((item, index) => (
                                     <MenuItem key={index} onClick={item.onClick}>
-                                        {item.label}
+                                        <RouterLink to={item.route} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                            {item.label}
+                                        </RouterLink>
                                     </MenuItem>
                                 ))}
                             </Menu>
                             <Button
+                                component={RouterLink}
+                                to="/crypto-indicators"
                                 color="inherit"
                                 aria-controls="crypto-indicators-menu"
                                 aria-haspopup="true"
@@ -125,15 +133,21 @@ const Navbar: React.FC = () => {
                             >
                                 {menuItems2.map((item, index) => (
                                     <MenuItem key={index} onClick={item.onClick}>
-                                        {item.label}
+                                        <RouterLink to={item.route} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                            {item.label}
+                                        </RouterLink>
                                     </MenuItem>
                                 ))}
                             </Menu>
                         </Box>
                     </Box>
                     <Box>
-                        <Button color="inherit" sx={{ fontWeight: 'bolder', marginLeft: 2 }} onClick={handleLoginOpen}>
-                            Login
+                        <Button component={RouterLink} to="/login" color="inherit" sx={{ fontWeight: 'bolder', marginLeft: 2 }}>
+                            Login <Login open={false} onClose={function (): void {
+                                throw new Error('Function not implemented.');
+                            } } onSignupOpen={function (): void {
+                                throw new Error('Function not implemented.');
+                            } } />
                         </Button>
                     </Box>
                 </Toolbar>
