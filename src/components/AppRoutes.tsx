@@ -5,11 +5,11 @@ import { Routes, Route } from 'react-router-dom';
 import DashboardSummary from './CryptoIndicators/DashboardSummary';
 import PortfolioReturns from './CryptoIndicators/PortfolioReturns';
 import RiskOverview from './CryptoIndicators/RiskOverview';
-import IndexWizard from './cryptodata/IndexWizard';
-import TechnicalAnalysis from './cryptodata/TechnicalAnalysis';
-import CryptoMonitor from './cryptodata/CryptoMonitor'
+import CryptoMonitor from './CryptoData/CryptoMonitor';
+import IndexWizard from './CryptoData/IndexWizard';
+import MyWatchlists from './CryptoData/MyWatchlists';
+import TechnicalAnalysis from './CryptoData/TechnicalAnalysis';
 import Myportfolio from './CryptoIndicators/Myportfolio';
-import MyWatchlists from './cryptodata/MyWatchlists';
 
 
 const AppRoutes: React.FC = () => {
