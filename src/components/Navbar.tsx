@@ -1,5 +1,3 @@
-// src/components/Navbar.tsx
-
 import React, { useState } from 'react';
 import {
     AppBar,
@@ -8,7 +6,6 @@ import {
     Menu,
     MenuItem,
     Box,
-    IconButton,
 } from '@mui/material';
 import { ArrowDropDown as ArrowDropDownIcon } from '@mui/icons-material'; // Import ArrowDropDownIcon
 import Logo from './Logo'; // Import the Logo component
@@ -56,18 +53,18 @@ const Navbar: React.FC = () => {
     ];
 
     const menuItems2 = [
-        { label: 'My Portfolios', route: '/portfolios', onClick: () => handleMenuClose(setAnchorElMonitor) },
-        { label: 'Dashboard Summary', route: '/dashboard-summary', onClick: () => handleMenuClose(setAnchorElMonitor) },
-        { label: 'Portfolio Returns', route: '/portfolio-returns', onClick: () => handleMenuClose(setAnchorElMonitor) },
-        { label: 'Risk Overview', route: '/risk-overview', onClick: () => handleMenuClose(setAnchorElMonitor) },
+        { label: 'My Portfolios', route: '/portfolios', onClick: () => handleMenuClose(setAnchorElIndicators) },
+        { label: 'Dashboard Summary', route: '/dashboard-summary', onClick: () => handleMenuClose(setAnchorElIndicators) },
+        { label: 'Portfolio Returns', route: '/portfolio-returns', onClick: () => handleMenuClose(setAnchorElIndicators) },
+        { label: 'Risk Overview', route: '/risk-overview', onClick: () => handleMenuClose(setAnchorElIndicators) },
     ];
 
     return (
         <Router> {/* Wrap your component with Router */}
             <AppBar position="static">
                 <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <RouterLink to="/"> {/* Link to home */}
-                        <Logo /> {/* Add the Logo component here */}
+                    <RouterLink to="/" style={{ textDecoration: 'none', color: 'inherit' }}> 
+                        <Logo /> 
                     </RouterLink>
                     <Box>
                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -142,12 +139,8 @@ const Navbar: React.FC = () => {
                         </Box>
                     </Box>
                     <Box>
-                        <Button component={RouterLink} to="/login" color="inherit" sx={{ fontWeight: 'bolder', marginLeft: 2 }}>
-                            Login <Login open={false} onClose={function (): void {
-                                throw new Error('Function not implemented.');
-                            } } onSignupOpen={function (): void {
-                                throw new Error('Function not implemented.');
-                            } } />
+                        <Button component={RouterLink} to="/login" color="inherit" sx={{ fontWeight: 'bold', marginLeft: 2 }}>
+                            Login
                         </Button>
                     </Box>
                 </Toolbar>
