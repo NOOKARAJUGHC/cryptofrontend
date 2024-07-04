@@ -69,8 +69,7 @@ const Navbar: React.FC = () => {
                 <Box>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <Button
-                            component={RouterLink}
-                            to="/crypto-monitor"
+                          
                             color="inherit"
                             aria-controls="crypto-monitor-menu"
                             aria-haspopup="true"
@@ -103,8 +102,7 @@ const Navbar: React.FC = () => {
                             ))}
                         </Menu>
                         <Button
-                            component={RouterLink}
-                            to="/crypto-indicators"
+                          
                             color="inherit"
                             aria-controls="crypto-indicators-menu"
                             aria-haspopup="true"
