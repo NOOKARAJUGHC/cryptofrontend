@@ -1,3 +1,4 @@
+// Navbar.tsx
 import React, { useState } from 'react';
 import {
     AppBar,
@@ -7,11 +8,11 @@ import {
     MenuItem,
     Box,
 } from '@mui/material';
-import { ArrowDropDown as ArrowDropDownIcon } from '@mui/icons-material'; // Import ArrowDropDownIcon
-import Logo from './Logo'; // Import the Logo component
-import Login from './Login'; // Import the Login component
-import Signup from './Signup'; // Import the Signup component
-import { Link as RouterLink, BrowserRouter as Router } from 'react-router-dom'; // Import RouterLink and BrowserRouter
+import { ArrowDropDown as ArrowDropDownIcon } from '@mui/icons-material';
+import { Link as RouterLink } from 'react-router-dom';
+import Logo from './Logo';
+import Login from './Login';
+import Signup from './Signup';
 
 const Navbar: React.FC = () => {
     const [anchorElMonitor, setAnchorElMonitor] = useState<null | HTMLElement>(null);
@@ -28,7 +29,7 @@ const Navbar: React.FC = () => {
     };
 
     const handleLoginOpen = () => {
-        setSignupOpen(false); // Ensure signup dialog is closed
+        setSignupOpen(false);
         setLoginOpen(true);
     };
 
@@ -37,7 +38,7 @@ const Navbar: React.FC = () => {
     };
 
     const handleSignupOpen = () => {
-        setLoginOpen(false); // Ensure login dialog is closed
+        setLoginOpen(false);
         setSignupOpen(true);
     };
 
@@ -49,7 +50,7 @@ const Navbar: React.FC = () => {
         { label: 'Monitor', route: '/monitor', onClick: () => handleMenuClose(setAnchorElMonitor) },
         { label: 'Technical Analysis', route: '/technical-analysis', onClick: () => handleMenuClose(setAnchorElMonitor) },
         { label: 'Index Wizard', route: '/index-wizard', onClick: () => handleMenuClose(setAnchorElMonitor) },
-        { label: 'My Wishlists', route: '/wishlists', onClick: () => handleMenuClose(setAnchorElMonitor) },
+        { label: 'My Watchlists', route: '/my-watclists', onClick: () => handleMenuClose(setAnchorElMonitor) },
     ];
 
     const menuItems2 = [
@@ -60,98 +61,96 @@ const Navbar: React.FC = () => {
     ];
 
     return (
-        <Router> {/* Wrap your component with Router */}
-            <AppBar position="static">
-                <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <RouterLink to="/" style={{ textDecoration: 'none', color: 'inherit' }}> 
-                        <Logo /> 
-                    </RouterLink>
-                    <Box>
-                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                            <Button
-                                component={RouterLink}
-                                to="/crypto-monitor"
-                                color="inherit"
-                                aria-controls="crypto-monitor-menu"
-                                aria-haspopup="true"
-                                onClick={(event) => handleMenuOpen(event, setAnchorElMonitor)}
-                                sx={{ fontWeight: 'bold' }}
-                                endIcon={<ArrowDropDownIcon />} // Use ArrowDropDownIcon as end icon
-                            >
-                                Crypto Monitor
-                            </Button>
-                            <Menu
-                                id="crypto-monitor-menu"
-                                anchorEl={anchorElMonitor}
-                                open={Boolean(anchorElMonitor)}
-                                onClose={() => handleMenuClose(setAnchorElMonitor)}
-                                anchorOrigin={{
-                                    vertical: 'bottom',
-                                    horizontal: 'right',
-                                }}
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                            >
-                                {menuItems1.map((item, index) => (
-                                    <MenuItem key={index} onClick={item.onClick}>
-                                        <RouterLink to={item.route} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                            {item.label}
-                                        </RouterLink>
-                                    </MenuItem>
-                                ))}
-                            </Menu>
-                            <Button
-                                component={RouterLink}
-                                to="/crypto-indicators"
-                                color="inherit"
-                                aria-controls="crypto-indicators-menu"
-                                aria-haspopup="true"
-                                onClick={(event) => handleMenuOpen(event, setAnchorElIndicators)}
-                                sx={{ fontWeight: 'bold', marginLeft: 2 }}
-                                endIcon={<ArrowDropDownIcon />} // Use ArrowDropDownIcon as end icon
-                            >
-                                Crypto Indicators
-                            </Button>
-                            <Menu
-                                id="crypto-indicators-menu"
-                                anchorEl={anchorElIndicators}
-                                open={Boolean(anchorElIndicators)}
-                                onClose={() => handleMenuClose(setAnchorElIndicators)}
-                                anchorOrigin={{
-                                    vertical: 'bottom',
-                                    horizontal: 'right',
-                                }}
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                            >
-                                {menuItems2.map((item, index) => (
-                                    <MenuItem key={index} onClick={item.onClick}>
-                                        <RouterLink to={item.route} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                            {item.label}
-                                        </RouterLink>
-                                    </MenuItem>
-                                ))}
-                            </Menu>
-                        </Box>
-                    </Box>
-                    <Box>
-                        <Button color="inherit" sx={{ fontWeight: 'bold', marginLeft: 2 }} onClick={handleLoginOpen}>
-                            Login
+        <AppBar position="static">
+            <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                <RouterLink to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <Logo />
+                </RouterLink>
+                <Box>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Button
+                            component={RouterLink}
+                            to="/crypto-monitor"
+                            color="inherit"
+                            aria-controls="crypto-monitor-menu"
+                            aria-haspopup="true"
+                            onClick={(event) => handleMenuOpen(event, setAnchorElMonitor)}
+                            sx={{ fontWeight: 'bold' }}
+                            endIcon={<ArrowDropDownIcon />}
+                        >
+                            Crypto Monitor
                         </Button>
+                        <Menu
+                            id="crypto-monitor-menu"
+                            anchorEl={anchorElMonitor}
+                            open={Boolean(anchorElMonitor)}
+                            onClose={() => handleMenuClose(setAnchorElMonitor)}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'right',
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                        >
+                            {menuItems1.map((item, index) => (
+                                <MenuItem key={index} onClick={item.onClick}>
+                                    <RouterLink to={item.route} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                        {item.label}
+                                    </RouterLink>
+                                </MenuItem>
+                            ))}
+                        </Menu>
+                        <Button
+                            component={RouterLink}
+                            to="/crypto-indicators"
+                            color="inherit"
+                            aria-controls="crypto-indicators-menu"
+                            aria-haspopup="true"
+                            onClick={(event) => handleMenuOpen(event, setAnchorElIndicators)}
+                            sx={{ fontWeight: 'bold', marginLeft: 2 }}
+                            endIcon={<ArrowDropDownIcon />}
+                        >
+                            Crypto Indicators
+                        </Button>
+                        <Menu
+                            id="crypto-indicators-menu"
+                            anchorEl={anchorElIndicators}
+                            open={Boolean(anchorElIndicators)}
+                            onClose={() => handleMenuClose(setAnchorElIndicators)}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'right',
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                        >
+                            {menuItems2.map((item, index) => (
+                                <MenuItem key={index} onClick={item.onClick}>
+                                    <RouterLink to={item.route} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                        {item.label}
+                                    </RouterLink>
+                                </MenuItem>
+                            ))}
+                        </Menu>
                     </Box>
-                </Toolbar>
+                </Box>
+                <Box>
+                    <Button color="inherit" sx={{ fontWeight: 'bold', marginLeft: 2 }} onClick={handleLoginOpen}>
+                        Login
+                    </Button>
+                </Box>
+            </Toolbar>
 
-                {/* Login Dialog */}
-                <Login open={loginOpen} onClose={handleLoginClose} onSignupOpen={handleSignupOpen} />
+            {/* Login Dialog */}
+            <Login open={loginOpen} onClose={handleLoginClose} onSignupOpen={handleSignupOpen} />
 
-                {/* Signup Dialog */}
-                <Signup open={signupOpen} onClose={handleSignupClose} onLoginOpen={handleLoginOpen} />
-            </AppBar>
-        </Router>
+            {/* Signup Dialog */}
+            <Signup open={signupOpen} onClose={handleSignupClose} onLoginOpen={handleLoginOpen} />
+        </AppBar>
     );
 };
 
