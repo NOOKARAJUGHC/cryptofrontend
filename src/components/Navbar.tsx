@@ -139,7 +139,7 @@ const Navbar: React.FC = () => {
                         </Box>
                     </Box>
                     <Box>
-                        <Button component={RouterLink} to="/login" color="inherit" sx={{ fontWeight: 'bold', marginLeft: 2 }}>
+                        <Button color="inherit" sx={{ fontWeight: 'bold', marginLeft: 2 }} onClick={handleLoginOpen}>
                             Login
                         </Button>
                     </Box>
