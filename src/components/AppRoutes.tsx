@@ -1,5 +1,4 @@
 // AppRoutes.tsx
-import { Home } from '@mui/icons-material';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import DashboardSummary from './CryptoIndicators/DashboardSummary';
@@ -10,12 +9,13 @@ import IndexWizard from './CryptoData/IndexWizard';
 import MyWatchlists from './CryptoData/MyWatchlists';
 import TechnicalAnalysis from './CryptoData/TechnicalAnalysis';
 import Myportfolio from './CryptoIndicators/Myportfolio';
+import CryptoMain from './CryptoData/CryptoMain';
 
 
 const AppRoutes: React.FC = () => {
     return (
         <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<CryptoMain />} />
             <Route path="/monitor" element={<CryptoMonitor />} />
             <Route path="/technical-analysis" element={<TechnicalAnalysis />} />
             <Route path="/index-wizard" element={<IndexWizard />} />
