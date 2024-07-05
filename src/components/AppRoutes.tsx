@@ -4,12 +4,17 @@ import { Routes, Route } from 'react-router-dom';
 import DashboardSummary from './CryptoIndicators/DashboardSummary';
 import PortfolioReturns from './CryptoIndicators/PortfolioReturns';
 import RiskOverview from './CryptoIndicators/RiskOverview';
-import CryptoMonitor from './CryptoData/CryptoMonitor';
-import IndexWizard from './CryptoData/IndexWizard';
-import MyWatchlists from './CryptoData/MyWatchlists';
-import TechnicalAnalysis from './CryptoData/TechnicalAnalysis';
+// import CryptoMonitor from './CryptoData/CryptoMonitor';
+// import IndexWizard from './CryptoData/IndexWizard';
+// import MyWatchlists from './CryptoData/MyWatchlists';
+// import TechnicalAnalysis from './CryptoData/TechnicalAnalysis';
 import Myportfolio from './CryptoIndicators/Myportfolio';
-import CryptoMain from './CryptoData/CryptoMain';
+import CryptoMain from './cryptodata/CryptoMain';
+import CryptoMonitor from './cryptodata/CryptoMonitor';
+import TechnicalAnalysis from './cryptodata/TechnicalAnalysis';
+import IndexWizard from './cryptodata/IndexWizard';
+import MyWatchlists from './cryptodata/MyWatchlists';
+// import CryptoMain from './CryptoData/CryptoMain';
 
 
 const AppRoutes: React.FC = () => {
