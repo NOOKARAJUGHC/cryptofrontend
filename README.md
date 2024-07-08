@@ -8,6 +8,38 @@ In the project directory, you can run:
 
 ### `npm start`
 
+
+
+
+
+Run the code 
+
+set NODE_OPTIONS=--openssl-legacy-provider
+npx react-scripts start --host 192.168.1.59 --port 3000
+
+
+
+
+python manage.py runserver 192.168.1.50:8001
+python manage.py runserver 192.168.1.50:8002
+python manage.py runserver 192.168.1.50:8003
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 

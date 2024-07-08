@@ -129,10 +129,10 @@ const CryptoGainersLosers: React.FC = () => {
                 <TimePeriodSelector timePeriod={timePeriod} setTimePeriod={setTimePeriod} />
             </Box>
             <Grid container spacing={4}>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={18} md={9}>
                     <GainersLosersTable title="Top Gainers" data={data.top_gainers} headerColor="#4caf50"  />
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={18} md={9}>
                     <GainersLosersTable title="Top Losers" data={data.top_losers} headerColor="#f44336" />
                 </Grid>
             </Grid>
