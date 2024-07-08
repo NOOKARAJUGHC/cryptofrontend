@@ -1,13 +1,16 @@
-import React from 'react'
-import CryptoDashboard from '../CryptoMain/Crypto-dashboard'
-import CryptoOverview from '../CryptoMain/CryptoOverview'
-import CryptoGainersLosers from '../CryptoMain/crypto-gainers-loosers'
-const CryptoMain = () => {
+import React from 'react';
+import CryptoDashboard from '../CryptoMain/Crypto-dashboard';
+import CryptoOverview from '../CryptoMain/CryptoOverview';
+import CryptoGainersLosers from '../CryptoMain/crypto-gainers-loosers';
+
+const CryptoMain: React.FC = () => {
   return (
-<>
-<CryptoOverview />
-<CryptoGainersLosers />
-<CryptoDashboard />
-</>  )
-}
-export default CryptoMain
+    <>
+      <CryptoOverview />
+      <CryptoGainersLosers />
+      <CryptoDashboard />
+    </>
+  );
+};
+
+export default CryptoMain;
