@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Box, Typography, Autocomplete, TextField, CircularProgress } from '@mui/material';
+import { Container, Box, Typography, Autocomplete, TextField, CircularProgress, Card, CardContent, Grid } from '@mui/material';
 import axios from 'axios';
 
 interface CryptoData {
@@ -17,6 +17,7 @@ const TechnicalAnalysis: React.FC = () => {
     const [cryptoData, setCryptoData] = useState<CryptoData[]>([]);
     const [loading, setLoading] = useState(true);
     const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
+    const [tickerData, setTickerData] = useState<CryptoData | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -34,6 +35,12 @@ const TechnicalAnalysis: React.FC = () => {
 
     const handleCompanyChange = (event: any, newValue: string | null) => {
         setSelectedCompany(newValue);
+        if (newValue) {
+            const selectedCrypto = cryptoData.find(crypto => `${crypto.company} (${crypto.security_code})` === newValue);
+            setTickerData(selectedCrypto || null);
+        } else {
+            setTickerData(null);
+        }
     };
 
     if (loading) {
@@ -53,12 +60,10 @@ const TechnicalAnalysis: React.FC = () => {
 
     return (
         <Container sx={{ mt: 5, textAlign: 'left' }}>
-            <Box>
-                <Typography variant="h4" gutterBottom fontFamily={'Roboto, sans-serif'} sx={{ color: '#002060', fontWeight: 'bold' }}>
-                    Crypto Indicators
-                </Typography>
-            </Box>
-            <Box mb={3} width={'350px'} >
+            <Typography variant="h4" gutterBottom fontFamily={'Roboto, sans-serif'} sx={{ color: '#002060', fontWeight: 'bold' }}>
+                Crypto Indicators
+            </Typography>
+            <Box mb={3} width={'350px'}>
                 <Autocomplete
                     options={options}
                     getOptionLabel={(option) => option}
@@ -67,10 +72,43 @@ const TechnicalAnalysis: React.FC = () => {
                     renderInput={(params) => <TextField {...params} label="Select Company" variant="outlined" />}
                 />
             </Box>
-            {selectedCompany && (
-                <Typography variant="h6" gutterBottom>
-                    Selected Company: {selectedCompany}
-                </Typography>
+            {tickerData && (
+                <Card>
+                    <CardContent>
+                        <Grid container spacing={3}>
+                            <Grid item xs={4}>
+                                <Typography variant="body1" gutterBottom>
+                                    <strong>WEBSITE:</strong> {tickerData.price}
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Typography variant="body1" gutterBottom>
+                                    <strong>MAX SUPPLY:</strong> {tickerData.maxsupply === 0 ? 'Not Available' : tickerData.maxsupply}
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Typography variant="body1" gutterBottom>
+                                    <strong>MARKET DOMINANCE:</strong> {tickerData.marketcapdominance.toFixed(2)}%
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Typography variant="body1" gutterBottom>
+                                    <strong>COINS CIRCULATING:</strong> {tickerData.circulatingsupply.toFixed(2)}
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Typography variant="body1" gutterBottom>
+                                    <strong>MARKET CAP (in $ M):</strong> ${tickerData.marketcapitalization.toFixed(2)}
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Typography variant="body1" gutterBottom>
+                                    <strong>Price:</strong> ${tickerData.price.toFixed(2)}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                    </CardContent>
+                </Card>
             )}
         </Container>
     );
