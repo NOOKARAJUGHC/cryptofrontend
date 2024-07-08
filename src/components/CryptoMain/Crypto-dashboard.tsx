@@ -34,7 +34,7 @@ const CryptoDashboard: React.FC = () => {
     if (loading) {
         return (
             <Container sx={{ mt: 5, textAlign: 'left' }}>
-                <Typography variant="h4" gutterBottom>
+                <Typography variant="h4" gutterBottom  sx={{ color: '#002060', fontWeight: 'bold' }}>
                     Cryptocurrency Dashboard
                 </Typography>
                 <Box display="flex" justifyContent="center" alignItems="center" minHeight="50vh">
@@ -46,7 +46,7 @@ const CryptoDashboard: React.FC = () => {
 
     return (
         <Container sx={{ mt: 5, textAlign: 'left' }}>
-            <Typography variant="h4" gutterBottom fontFamily={'Roboto, sans-serif'}>
+            <Typography variant="h4" gutterBottom fontFamily={'Roboto, sans-serif'}  sx={{ color: '#002060', fontWeight: 'bold' }}>
                 Cryptocurrency Dashboard
             </Typography>
             <TableContainer component={Paper}>
@@ -66,7 +66,7 @@ const CryptoDashboard: React.FC = () => {
                     <TableBody>
                         {cryptoData.map((crypto) => (
                             <TableRow key={crypto.security_code} sx={{ '&:nth-of-type(odd)': { backgroundColor: '#f5f5f5' } }}>
-                                <TableCell>{crypto.company}</TableCell>
+                                <TableCell style={{ color: '#0078ff' }}>{crypto.company}</TableCell>
                                 <TableCell>{crypto.security_code}</TableCell>
                                 <TableCell>${crypto.price.toFixed(2)}</TableCell>
                                 <TableCell>${crypto.marketcapitalization.toFixed(2)}</TableCell>

@@ -5,7 +5,7 @@ const CryptoOverview: React.FC = () => {
   return (
     <Container>
       <Box sx={{ mt: 5, textAlign: 'left' }}>
-        <Typography variant="h4" gutterBottom fontFamily={'Roboto, sans-serif'}>
+        <Typography variant="h4" gutterBottom fontFamily={'Roboto, sans-serif'} sx={{ color: '#002060', fontWeight: 'bold' }}>
           Crypto Overview
         </Typography>
         <Typography variant="body1" paragraph fontFamily={'revert'}>

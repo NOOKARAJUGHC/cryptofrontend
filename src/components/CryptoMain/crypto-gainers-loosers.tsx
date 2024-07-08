@@ -46,15 +46,15 @@ const GainersLosersTable: React.FC<GainersLosersTableProps> = ({ title, data, he
                     <TableRow>
                         <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Company</TableCell>
                         <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Ticker</TableCell>
-                        <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Start Price</TableCell>
-                        <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>End Price</TableCell>
+                        <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Start Date </TableCell>
+                        <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>End Date</TableCell>
                         <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Return (%)</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {data.map((item) => (
                         <TableRow key={item.fs_ticker} sx={{ '&:nth-of-type(odd)': { backgroundColor: '#f5f5f5' } }}>
-                            <TableCell>{item.company}</TableCell>
+                            <TableCell style={{ color: '#0078ff' }}>{item.company}</TableCell>
                             <TableCell>{item.fs_ticker}</TableCell>
                             <TableCell>${item.start_price.toFixed(2)}</TableCell>
                             <TableCell>${item.end_price.toFixed(2)}</TableCell>
@@ -108,7 +108,7 @@ const CryptoGainersLosers: React.FC = () => {
         return (
             <Container>
                 <Box display="flex" justifyContent="space-between" alignItems="center" mb={4}>
-                    <Typography variant="h4" fontFamily={'Roboto, sans-serif'}>
+                    <Typography variant="h4" fontFamily={'Roboto, sans-serif'}  sx={{ color: '#002060', fontWeight: 'bold' }}>
                         Top Gainers and Losers
                     </Typography>
                     <TimePeriodSelector timePeriod={timePeriod} setTimePeriod={setTimePeriod} />
@@ -123,14 +123,14 @@ const CryptoGainersLosers: React.FC = () => {
     return (
         <Container sx={{ mt: 5, textAlign: 'left' }}>
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={4}>
-                <Typography variant="h4">
+                <Typography variant="h4" sx={{ color: '#002060', fontWeight: 'bold' }}>
                     Top Gainers and Losers
                 </Typography>
                 <TimePeriodSelector timePeriod={timePeriod} setTimePeriod={setTimePeriod} />
             </Box>
             <Grid container spacing={4}>
                 <Grid item xs={12} md={6}>
-                    <GainersLosersTable title="Top Gainers" data={data.top_gainers} headerColor="#4caf50" />
+                    <GainersLosersTable title="Top Gainers" data={data.top_gainers} headerColor="#4caf50"  />
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <GainersLosersTable title="Top Losers" data={data.top_losers} headerColor="#f44336" />
